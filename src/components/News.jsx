@@ -29,11 +29,11 @@ export default function News() {
         }
     ];
     return (
-        <div className='container mx-auto border border-gray-500 p-3 rounded-2xl'>
+        <div className='container mx-auto border border-gray-500 p-1 rounded-sm'>
 
             <div className='flex items-center gap-3 px-10 lg:px-0'>
                 <button className='btn bg-gray-900/50'>Latest News</button>
-                <Marquee>
+                <Marquee pauseOnHover={true} speed={60}>
                    {newsArray.map(n=> <span key={n.id}>{n.title}</span>)}
                 </Marquee>
             </div>
