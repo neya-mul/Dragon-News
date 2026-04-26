@@ -9,7 +9,6 @@ export default function Header() {
       <Image src={logo} alt='logo' width={400} height={400} className=' mx-auto' />
       <p className='text-xl font-bold'>Journalism Without Fear or Favour</p>
       <p>{format(new Date(), "EEEE, MMM, dd, YYY")}</p>
-
     </div>
   )
 }
