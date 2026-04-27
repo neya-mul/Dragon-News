@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 
@@ -34,6 +35,7 @@ export default function NewsCard({ n }) {
                 <p className='text-2xl font-bold'>Rating : {n.rating.number}</p>
                
             </div>
+           <Link href={`/details/${n._id}`}> <button className='btn w-full'>See Details</button></Link>
         </div>
     )
 }
