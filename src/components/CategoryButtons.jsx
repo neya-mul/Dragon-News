@@ -12,7 +12,7 @@ export default function CategoryButtons({ categories, activeId }) {
             </div>
             <div className='space-y-3'>
                 {categories.news_category.map(categorie => <p className={`text-center ${activeId === categorie.category_id && 'bg-gray-100/35'} p-1 my-2`} key={categorie.category_id}>
-                    <Link className='block' href={`/category/${categorie.category_id}`}> {categorie.category_name}</Link>
+                    <Link className='block btn' href={`/category/${categorie.category_id}`}> {categorie.category_name}</Link>
                 </p>)}
 
             </div>
