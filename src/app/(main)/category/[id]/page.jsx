@@ -1,21 +1,10 @@
+import { getCategorieId, getCategories } from '@/app/lib/data'
 import AllNews from '@/components/AllNews'
 import CategoryButtons from '@/components/CategoryButtons'
 import LoginSide from '@/components/LoginSide'
 import React from 'react'
 
-async function getCategories() {
-    const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
-    const data = await res.json()
-    return data.data
 
-}
-
-async function getCategorieId(id) {
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
-    const data = await res.json()
-    return data.data
-
-}
 
 export default async function News({ params }) {
     const { id } = await params
@@ -23,7 +12,7 @@ export default async function News({ params }) {
     // console.log(categories);
 
     const news = await getCategorieId(id)
-    console.log(news);
+    // console.log(news);
 
 
 
