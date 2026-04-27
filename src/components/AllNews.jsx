@@ -7,7 +7,7 @@ export default function AllNews({ news }) {
       <div>
         <h1 className='font-bold'>Dragon News Home</h1>
       </div>
-      <div>
+      <div className='space-y-10'>
         {
           news.map((n, ind)=> <NewsCard n={n} key={ind}></NewsCard>)
         }

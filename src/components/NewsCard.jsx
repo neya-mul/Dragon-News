@@ -5,7 +5,7 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 
 export default function NewsCard({ n }) {
     return (
-        <div className="card bg-base-100 shadow-sm">
+        <div className="card bg-base-100 shadow-sm border p-6 rounded-2xl space-y-3.5">
 
             <div>
                 <div className='flex justify-between items-center'>
@@ -30,7 +30,8 @@ export default function NewsCard({ n }) {
             <div className="card-body">
              
                 <h1 className='text-2xl font-bold'>{n.title}</h1>
-                <p>{n.details}</p>
+                <p className='line-clamp-4'>{n.details}</p>
+                <p className='text-2xl font-bold'>Rating : {n.rating.number}</p>
                
             </div>
         </div>
