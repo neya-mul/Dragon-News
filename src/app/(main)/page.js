@@ -3,17 +3,27 @@ import CategoryButtons from "@/components/CategoryButtons";
 import LoginSide from "@/components/LoginSide";
 import Image from "next/image";
 
-export default function Home() {
+async function getCategories() {
+  const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
+  const data = await res.json()
+  return data.data
+
+}
+
+export default async function Home() {
+  const categories = await getCategories()
+  console.log(categories);
+
   return (
     <div className="container mx-auto grid grid-cols-12 gap-3">
       {/* category buttons */}
       <div className="col-span-3 border">
-        <CategoryButtons></CategoryButtons>
+        <CategoryButtons categories={categories} activeId={'01'}></CategoryButtons>
       </div>
-      <div  className="col-span-6 border">
+      <div className="col-span-6 border">
         <AllNews></AllNews>
       </div>
-      <div  className="col-span-3 border">
+      <div className="col-span-3 border">
         <LoginSide></LoginSide>
       </div>
 
