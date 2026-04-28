@@ -19,7 +19,7 @@ export default function Login() {
 
           {/* Title */}
           <h2 className="text-2xl font-semibold text-white text-center mb-6">
-            Welcome Back
+           Login
           </h2>
 
           {/* Form */}
