@@ -1,12 +1,20 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { use } from 'react'
 import user from '../assets/user.png'
 import { FaUser } from "react-icons/fa";
 import NavLink from './NavLink';
+import { authClient } from '@/lib/auth-client';
 
 
 export default function Navbar() {
+const { data: session } = authClient.useSession()
+// console.log(session);
+const user = session.user
+console.log(user);
+
+
   return (
     <div className='flex justify-between items-center container mx-auto my-10'>
       <div className='none'></div>
@@ -18,9 +26,11 @@ export default function Navbar() {
         </ul>
       </div>
       <div className='flex items-center gap-7'>
-        <div>
+        <div className='flex items-center gap-3'>
+          <span>Hello : {user.name}</span>
           <FaUser />
         </div>
+        
         <Link href='/login'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Login</button></Link>
 
       </div>
