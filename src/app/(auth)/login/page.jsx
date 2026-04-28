@@ -1,14 +1,29 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 // import { email } from 'better-auth/*';
 import Link from 'next/link'
 import React from 'react'
 
 export default function Login() {
-  const loginFunction = (e) => {
+  const loginFunction = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value 
-    console.log(email, password);
+    const password = e.target.password.value
+    // console.log(email, password);
+    const { data, error } = await authClient.signIn.email({
+
+      email: email, // required
+      password: password, // required
+      rememberMe: true,
+      callbackURL: "/",
+    });
+    console.log(data, error);
+    if (error) {
+      alert(error.message)
+    }
+    else {
+      alert("Log In success")
+    }
   }
 
 
@@ -19,7 +34,7 @@ export default function Login() {
 
           {/* Title */}
           <h2 className="text-2xl font-semibold text-white text-center mb-6">
-           Login
+            Login
           </h2>
 
           {/* Form */}

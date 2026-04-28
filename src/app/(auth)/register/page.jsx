@@ -14,10 +14,16 @@ export default function Register() {
             name: name, // required
             email: email, // required
             password: password, // required
-            
-            callbackURL: "/",
+          
+            callbackURL: "/login",
         });
         console.log(data, error);
+        if(error){
+            alert(error.message)
+        }
+        else{
+            alert("Registered successfully")
+        }
         
     }
     return (
