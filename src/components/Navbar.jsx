@@ -9,10 +9,10 @@ import { authClient } from '@/lib/auth-client';
 
 
 export default function Navbar() {
-const { data: session } = authClient.useSession()
-// console.log(session);
-const user = session.user
-console.log(user);
+  const { data: session } = authClient.useSession()
+  // console.log(session);
+  const user = session?.user
+  // console.log(user);
 
 
   return (
@@ -27,11 +27,21 @@ console.log(user);
       </div>
       <div className='flex items-center gap-7'>
         <div className='flex items-center gap-3'>
-          <span>Hello : {user.name}</span>
-          <FaUser />
+          {user && (  // ✅ Only render user info when session is loaded
+            <div className='flex items-center gap-3'>
+              <span>Hello: {user.name}</span>
+              <FaUser />
+            </div>
+          )}
+
         </div>
-        
-        <Link href='/login'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Login</button></Link>
+
+        {
+          user ? (<Link href='/login'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log Out</button></Link>) :
+
+            (<Link href='/'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log In</button></Link>)
+        }
+
 
       </div>
     </div>
