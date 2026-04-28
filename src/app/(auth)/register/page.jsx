@@ -1,9 +1,24 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import React from 'react'
 
 export default function Register() {
-    const registerFunction = () => {
+    const registerFunction = async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value
+        const email = e.target.email.value;
+        const password = e.target.password.value
+        // console.log(email, password);
 
+        const { data, error } = await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            
+            callbackURL: "/",
+        });
+        console.log(data, error);
+        
     }
     return (
         <div>
@@ -24,7 +39,7 @@ export default function Register() {
                             </label>
                             <input
                                 name='name'
-                                type="name"
+                                type="text"
                                 placeholder="Name"
                                 className="w-full px-4 py-2 rounded-lg bg-black border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
                             />

@@ -1,4 +1,4 @@
-import { getCategorieId, getCategories } from '@/app/lib/data'
+import { getCategorieId, getCategories } from '@/lib/data'
 import AllNews from '@/components/AllNews'
 import CategoryButtons from '@/components/CategoryButtons'
 import LoginSide from '@/components/LoginSide'
