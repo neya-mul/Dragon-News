@@ -1,4 +1,5 @@
 'use client'
+// import { email } from 'better-auth/*';
 import Link from 'next/link'
 import React from 'react'
 
@@ -6,8 +7,10 @@ export default function Login() {
   const loginFunction = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value
+    const password = e.target.password.value 
+    console.log(email, password);
   }
+
 
   return (
     <div>
