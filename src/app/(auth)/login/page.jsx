@@ -2,9 +2,11 @@
 import { authClient } from '@/lib/auth-client';
 // import { email } from 'better-auth/*';
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function Login() {
+  const [showPass, setShowPass] = useState(true)
   const loginFunction = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -54,16 +56,21 @@ export default function Login() {
             </div>
 
             {/* Password Field */}
-            <div>
+            <div className='relative'>
               <label className="block text-sm text-gray-400 mb-1">
                 Password
               </label>
               <input
                 name='password'
-                type="password"
+                type={showPass ? 'password' : 'text'}
                 placeholder="••••••••"
                 className="w-full px-4 py-2 rounded-lg bg-black border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
               />
+
+              <span className='absolute top-9 right-2' onClick={()=> setShowPass(!showPass)}> 
+              {showPass ?   <FaEye /> : <FaEyeSlash />
+}
+                </span>
             </div>
 
             {/* Button */}

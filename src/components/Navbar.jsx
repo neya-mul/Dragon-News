@@ -6,6 +6,7 @@ import user from '../assets/user.png'
 import { FaUser } from "react-icons/fa";
 import NavLink from './NavLink';
 import { authClient } from '@/lib/auth-client';
+import { router } from 'better-auth/api'
 
 
 export default function Navbar() {
@@ -13,7 +14,15 @@ export default function Navbar() {
   // console.log(session);
   const user = session?.user
   // console.log(user);
-
+  const logOutButton = async () => {
+    await authClient.signOut({
+      // fetchOptions: {
+      //   onSuccess: () => {
+      //     router.push("/login"); // redirect to login page
+      //   },
+      // },
+    });
+  }
 
   return (
     <div className='flex justify-between items-center container mx-auto my-10'>
@@ -27,19 +36,20 @@ export default function Navbar() {
       </div>
       <div className='flex items-center gap-7'>
         <div className='flex items-center gap-3'>
-          {user && (  // ✅ Only render user info when session is loaded
+          {user ? (  // ✅ Only render user info when session is loaded
             <div className='flex items-center gap-3'>
               <span>Hello: {user.name}</span>
               <FaUser />
             </div>
-          )}
+
+          ) : null}
 
         </div>
 
         {
-          user ? (<Link href='/login'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log Out</button></Link>) :
+          user ? (<button onClick={logOutButton} className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log Out</button>) :
 
-            (<Link href='/'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log In</button></Link>)
+            (<Link href='/login'> <button className='btn bg-gray-950/45 hover:bg-gray-500 rounded-2xl'>Log In</button></Link>)
         }
 
 
